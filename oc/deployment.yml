@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: http-dns-delegate
+  name: http-dns-delegate
+  namespace: ocio-github-runners
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-dns-delegate
+  template:
+    metadata:
+      labels:
+        app: http-dns-delegate
+    spec:
+      containers:
+        - image: fartbagxp/http-dns-delegate
+          imagePullPolicy: Always
+          name: http-dns-delegate
+          ports:
+            - containerPort: 9000
+              protocol: TCP
+      nodeSelector:
+        kubernetes.io/os: linux
+      restartPolicy: Always
