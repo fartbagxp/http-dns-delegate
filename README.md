@@ -38,7 +38,7 @@ Test it out by navigating to [localhost:8080](http://localhost:8080) or [localho
 > `podman ps`
 
 - Check Application Logs
-> `podman logs <container ID>
+> `podman logs <container ID>`
 
 - Kill the Image
-> `podman kill <container ID>
+> `podman kill <container ID>`
