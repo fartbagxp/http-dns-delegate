@@ -72,8 +72,8 @@ const requestListener = async (req, res) => {
   }
 };
 
-const host = 'localhost';
-const port = process.env.SERVER_PORT || 8000;
+const host = process.env.SERVICE_HOST || '127.0.0.1'
+const port = process.env.SERVICE_PORT || 8000;
 
 const server = http.createServer(requestListener);
 server.listen(port, host, () => {
