@@ -1,1 +1,62 @@
-openapi.yaml
+openapi: 3.0.3
+info:
+  title: DNS Fetch 
+  description: |-
+    This is a
+    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+  version: 1.0.0
+servers:
+  - url: https://localhost:8000
+paths:
+  /{domain}:
+    get:
+      tags:
+        - dns
+      summary: resolve DNS
+      description: Returns a list of IP addresses resolved by DNS
+      operationId: resolveDns
+      parameters:
+        - name: domain
+          in: path
+          description: Domain Name to DNS resolve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'          
+        '404':
+          description: Domain not resolvable by DNS
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotResolvable'
+components:
+  schemas:
+    Domain:
+      type: object
+      properties:
+        ip_addresses:
+          type: array
+          items:
+            type: string
+          example: [144.125.0.0,144.125.0.1,144.125.0.2]
+        nameservers:
+          type: array
+          items:
+            type: string
+          example: [1.1.1.1,1.0.0.1]
+        url:
+          type: string
+          example: 'google.com'
+    ErrorNotResolvable:
+      type: object
+      properties:
+        error:
+          type: string
+          example: 'Failed to resolve example.com using nameservers 1.1.1.1'
