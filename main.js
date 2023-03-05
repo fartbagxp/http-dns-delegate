@@ -30,12 +30,12 @@ const requestListener = async (req, res) => {
     }
     else {
       const domainName = getDomainName(req.url);
-      const addresses = [];
-     try {
-        addresses.push(await getResolution(domainName));
+      try {
+        const addresses = await getResolution(domainName);
         const result = {
           ip_addresses: addresses,
-          nameserver: dns.getServers()
+          nameservers: dns.getServers(),
+          url: domainName
         }
         res.writeHead(200, {
           'Content-Type': 'application/json' });
@@ -67,7 +67,7 @@ const requestListener = async (req, res) => {
 };
 
 const host = 'localhost';
-const port = 8000;
+const port = process.env.SERVER_PORT || 8000;
 
 const server = http.createServer(requestListener);
 server.listen(port, host, () => {
