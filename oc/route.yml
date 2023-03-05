@@ -9,7 +9,7 @@ spec:
     kind: Service
     name: http-dns-delegate
   port:
-    targetPort: 9000
+    targetPort: 8000
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect

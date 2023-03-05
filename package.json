@@ -4,6 +4,7 @@
   "description": "resolve DNS by https",
   "main": "main.js",
   "scripts": {
+    "start": "node main.js",
     "test": "node main.js",
     "build": "swagger-editor build"
   },

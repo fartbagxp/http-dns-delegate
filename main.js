@@ -1,4 +1,5 @@
 const dns = require('node:dns');
+const fs = require('fs');
 const http = require("http");
 const url = require('url');
 
@@ -25,6 +26,11 @@ const requestListener = async (req, res) => {
   if (req.method === "GET") {
     const reqUrl = url.parse(req.url).pathname
     if (reqUrl === "/") {
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      var file = fs.createReadStream('html/index.html');
+      file.pipe(res);
+    }
+    else if (reqUrl === "/favicon.ico") {
       res.write('');
       res.end();
     }

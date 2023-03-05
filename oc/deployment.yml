@@ -20,7 +20,7 @@ spec:
           imagePullPolicy: Always
           name: http-dns-delegate
           ports:
-            - containerPort: 9000
+            - containerPort: 8000
               protocol: TCP
       nodeSelector:
         kubernetes.io/os: linux
