@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: http-dns-delegate
+  namespace: ocio-github-runners
+spec:
+  path: /
+  to:
+    kind: Service
+    name: http-dns-delegate
+  port:
+    targetPort: 8000
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

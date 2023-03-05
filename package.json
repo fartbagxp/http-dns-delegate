@@ -1,0 +1,20 @@
+{
+  "name": "http-dns-delegate",
+  "version": "1.0.0",
+  "description": "resolve DNS by https",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "node main.js",
+    "build": "swagger-editor build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fartbagxp/http-dns-delegate.git"
+  },
+  "author": "Boris Ning",
+  "license": "MIT",
+  "engines": {
+    "node": ">=v18.14.2"
+  }
+}
